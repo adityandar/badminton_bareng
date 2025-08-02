@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 class BdAppBar extends AppBar {
   BdAppBar({super.key, String? title})
     : super(
-        title: title != null ? Text(title, style: BdTStyles.s14w600) : null,
+        title: title != null ? Text(title, style: BdTStyles.s14w700) : null,
       );
 }
