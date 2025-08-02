@@ -16,6 +16,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: BdColors.primary),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
