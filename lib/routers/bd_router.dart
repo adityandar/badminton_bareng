@@ -7,5 +7,6 @@ class BdRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
     AutoRoute(page: MainRoute.page, initial: true),
     AutoRoute(page: InputPlayerRoute.page),
+    AutoRoute(page: MatchRoute.page),
   ];
 }
