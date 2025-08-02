@@ -4,12 +4,17 @@ part 'input_player_state.freezed.dart';
 
 @freezed
 class InputPlayerState with _$InputPlayerState {
-  factory InputPlayerState({
-    required List<String> names,
-    required bool triggerResetInputName,
-  }) = _InputPlayerState;
+  InputPlayerState({
+    required this.playerNames,
+    required this.triggerResetInputName,
+  });
 
   factory InputPlayerState.initial() {
-    return InputPlayerState(names: [], triggerResetInputName: false);
+    return InputPlayerState(playerNames: [], triggerResetInputName: false);
   }
+
+  @override
+  final List<String> playerNames;
+  @override
+  final bool triggerResetInputName;
 }

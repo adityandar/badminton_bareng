@@ -1,4 +1,6 @@
 import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badmintoon/routers/index.dart';
+import 'package:badmintoon/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 import '../cubits/index.dart';
@@ -13,7 +15,7 @@ class InputPlayerBottomView extends StatefulWidget {
 class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
   final textEditingController = TextEditingController();
 
-  void _onSubmit() {
+  void _addPlayerName() {
     if (textEditingController.text.isEmpty) {
       toastification.show(
         context: context,
@@ -40,6 +42,8 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
         }
       },
       builder: (context, state) {
+        final playerAmount = state.playerNames.length;
+
         return Padding(
           padding: EdgeInsets.fromLTRB(
             16,
@@ -47,25 +51,51 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
             16,
             MediaQuery.of(context).viewPadding.bottom + 16,
           ),
-          child: Row(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: TextFormField(
-                  controller: textEditingController,
-                  decoration: InputDecoration(
-                    hintText: 'Nama Pemain',
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: textEditingController,
+                      decoration: InputDecoration(
+                        hintText: 'Nama Pemain',
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                      onFieldSubmitted: (_) => _addPlayerName(),
                     ),
                   ),
-                  onFieldSubmitted: (_) => _onSubmit(),
-                ),
+                  Gap(16),
+                  IconButton.filled(
+                    onPressed: _addPlayerName,
+                    icon: Icon(Icons.add),
+                  ),
+                ],
               ),
               Gap(16),
-              IconButton.filled(onPressed: _onSubmit, icon: Icon(Icons.add)),
+              BdElevatedButton(
+                minWidth: MediaQuery.of(context).size.width,
+                title: 'Mulai Pertandingan ($playerAmount Pemain)',
+                onPressed: () {
+                  if (playerAmount < 2) {
+                    toastification.show(
+                      context: context,
+                      title: Text('Jumlah pemain minimal 2 orang'),
+                      autoCloseDuration: const Duration(seconds: 5),
+                      type: ToastificationType.error,
+                    );
+                    return;
+                  }
+
+                  context.replaceRoute(MatchRoute());
+                },
+              ),
             ],
           ),
         );

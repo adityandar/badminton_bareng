@@ -12,17 +12,22 @@ class InputPlayerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<InputPlayerCubit, InputPlayerState>(
       builder: (context, state) {
-        final names = state.names;
-        if (names.isEmpty) {
+        final playerNames = state.playerNames;
+
+        if (playerNames.isEmpty) {
           return Center(
-            child: Text('Daftar pemain masih kosong', style: BdTStyles.s14w500),
+            child: Text(
+              'Daftar pemain masih kosong\nIsi terlebih dahulu',
+              textAlign: TextAlign.center,
+              style: BdTStyles.s14w500,
+            ),
           );
         }
 
         return ListView.separated(
-          itemCount: names.length,
+          itemCount: playerNames.length,
           itemBuilder: (context, index) {
-            final name = names[index];
+            final name = playerNames[index];
             final initial = StringHelper.initial(name, 2);
 
             return DbDismissible(
