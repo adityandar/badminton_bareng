@@ -94,6 +94,11 @@ class BdTStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static final s16w900 = _baseTextStyle.copyWith(
+    fontSize: 16,
+    fontWeight: FontWeight.w900,
+  );
+
   // Font Size 18
   static final s18w300 = _baseTextStyle.copyWith(
     fontSize: 18,
@@ -114,6 +119,11 @@ class BdTStyles {
   static final s18w700 = _baseTextStyle.copyWith(
     fontSize: 18,
     fontWeight: FontWeight.w700,
+  );
+
+  static final s18w900 = _baseTextStyle.copyWith(
+    fontSize: 18,
+    fontWeight: FontWeight.w900,
   );
 
   // Font Size 20
@@ -138,6 +148,11 @@ class BdTStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static final s20w900 = _baseTextStyle.copyWith(
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+  );
+
   // Font Size 22
   static final s22w400 = _baseTextStyle.copyWith(
     fontSize: 22,
@@ -154,6 +169,11 @@ class BdTStyles {
   static final s22w700 = _baseTextStyle.copyWith(
     fontSize: 22,
     fontWeight: FontWeight.w700,
+  );
+
+  static final s22w900 = _baseTextStyle.copyWith(
+    fontSize: 22,
+    fontWeight: FontWeight.w900,
   );
 
   // Font Size 24
@@ -174,6 +194,11 @@ class BdTStyles {
     fontWeight: FontWeight.w700,
   );
 
+  static final s24w900 = _baseTextStyle.copyWith(
+    fontSize: 24,
+    fontWeight: FontWeight.w900,
+  );
+
   // Font Size 28
   static final s28w400 = _baseTextStyle.copyWith(
     fontSize: 28,
@@ -190,6 +215,11 @@ class BdTStyles {
   static final s28w700 = _baseTextStyle.copyWith(
     fontSize: 28,
     fontWeight: FontWeight.w700,
+  );
+
+  static final s28w900 = _baseTextStyle.copyWith(
+    fontSize: 28,
+    fontWeight: FontWeight.w900,
   );
 
   // Font Size 32
