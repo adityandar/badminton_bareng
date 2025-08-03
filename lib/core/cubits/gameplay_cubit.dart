@@ -87,6 +87,18 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
     );
   }
 
+  List<PlayerEntity> getTopPlayers(int limit) {
+    final currentSession = state.activeSession;
+    if (currentSession == null) {
+      return [];
+    }
+
+    return getIt<PlayerUsecase>().getTopPlayers(
+      playerDatabase: currentSession.players,
+      limit: limit,
+    );
+  }
+
   @override
   GameplayState? fromJson(Map<String, dynamic> json) =>
       GameplayState.fromJson(json);

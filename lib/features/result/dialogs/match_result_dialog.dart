@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:badmintoon/core/core.dart';
 import 'package:badmintoon/dependencies/dependencies.dart';
 import 'package:badmintoon/domain/domain.dart';
 import 'package:badmintoon/shared/shared.dart';
@@ -48,98 +49,132 @@ class _MatchResultDialogState extends State<MatchResultDialog> {
     super.dispose();
   }
 
+  String winnerEmoji(int rank) {
+    switch (rank) {
+      case 0:
+        return '🥇';
+      case 1:
+        return '🥈';
+      case 2:
+        return '🥉';
+      default:
+        return '🪙';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: BdColors.white,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  '🏆 Selamat! Team Merah Menang! 🎉',
-                  style: BdTStyles.s20w700,
+    return BlocBuilder<GameplayCubit, GameplayState>(
+      builder: (context, state) {
+        final matchIndex = state.activeSession?.matches.length ?? 0;
+        final threeTopPlayers = context.read<GameplayCubit>().getTopPlayers(3);
+
+        return Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: BdColors.white,
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                Text('Game ke-4 sudah selesai', style: BdTStyles.s16w600),
-                Gap(16),
-                Text('🔥 Top 3 Peringkat', style: BdTStyles.s16w600),
-                Gap(4),
-                Text('🥇 Aditya — 3x menang', style: BdTStyles.s16w400),
-                Text('🥈 Budi — 2x menang', style: BdTStyles.s16w400),
-                Text('🥉 Citra — 3x menang', style: BdTStyles.s16w400),
-                Gap(8),
-                Text(
-                  'Siap untuk game berikutnya? 😉',
-                  style: BdTStyles.s16w400,
-                ),
-                Gap(16),
-                Row(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    BdElevatedButton(
-                      title: 'Lanjut Main',
-                      onPressed: () {
-                        context.pop(MatchResultDialogActionType.continueGame);
-                      },
+                    Text(
+                      '🏆 Selamat! Team ${widget.winner.name} Menang! 🎉',
+                      style: BdTStyles.s20w700,
+                    ),
+                    Text(
+                      'Game ke-${matchIndex + 1} sudah selesai',
+                      style: BdTStyles.s16w600,
+                    ),
+                    Gap(16),
+                    Text(
+                      '🔥 Top ${threeTopPlayers.length} Peringkat',
+                      style: BdTStyles.s16w600,
+                    ),
+                    Gap(4),
+                    ...threeTopPlayers.mapIndexed(
+                      (index, player) => Text(
+                        '${winnerEmoji(index)} '
+                        '${player.name} — ${player.wins}x menang',
+                        style: BdTStyles.s16w400,
+                      ),
                     ),
                     Gap(8),
-                    BdOutlinedButton(
+                    Text(
+                      'Siap untuk game berikutnya? 😉',
+                      style: BdTStyles.s16w400,
+                    ),
+                    Gap(16),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        BdElevatedButton(
+                          title: 'Lanjut Main',
+                          onPressed: () {
+                            context.pop(
+                              MatchResultDialogActionType.continueGame,
+                            );
+                          },
+                        ),
+                        Gap(8),
+                        BdOutlinedButton(
+                          onPressed: () {
+                            context.pop(
+                              MatchResultDialogActionType.viewStatistics,
+                            );
+                          },
+                          title: 'Liat Statistik',
+                        ),
+                      ],
+                    ),
+                    Gap(8),
+                    BdTextButton(
                       onPressed: () {
-                        context.pop(MatchResultDialogActionType.viewStatistics);
+                        context.pop(MatchResultDialogActionType.finish);
                       },
-                      title: 'Liat Statistik',
+                      title: 'Selesai',
                     ),
                   ],
                 ),
-                Gap(8),
-                BdTextButton(
-                  onPressed: () {
-                    context.pop(MatchResultDialogActionType.finish);
-                  },
-                  title: 'Selesai',
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: ConfettiWidget(
-            confettiController: _confettiController,
-            blastDirection: 5 * pi / 4,
-            particleDrag: 0.05,
-            emissionFrequency: 0.05,
-            numberOfParticles: 10,
-            gravity: 0.05,
-            shouldLoop: false,
-            colors: const [Colors.green, Colors.blue, Colors.pink],
-            strokeWidth: 1,
-            strokeColor: Colors.white,
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: ConfettiWidget(
-            confettiController: _confettiController,
-            blastDirection: 7 * pi / 4,
-            particleDrag: 0.05,
-            emissionFrequency: 0.05,
-            numberOfParticles: 10,
-            gravity: 0.05,
-            shouldLoop: false,
-            colors: const [Colors.green, Colors.blue, Colors.pink],
-            strokeWidth: 1,
-            strokeColor: Colors.white,
-          ),
-        ),
-      ],
+            Align(
+              alignment: Alignment.centerRight,
+              child: ConfettiWidget(
+                confettiController: _confettiController,
+                blastDirection: 5 * pi / 4,
+                particleDrag: 0.05,
+                emissionFrequency: 0.05,
+                numberOfParticles: 10,
+                gravity: 0.05,
+                shouldLoop: false,
+                colors: const [Colors.green, Colors.blue, Colors.pink],
+                strokeWidth: 1,
+                strokeColor: Colors.white,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: ConfettiWidget(
+                confettiController: _confettiController,
+                blastDirection: 7 * pi / 4,
+                particleDrag: 0.05,
+                emissionFrequency: 0.05,
+                numberOfParticles: 10,
+                gravity: 0.05,
+                shouldLoop: false,
+                colors: const [Colors.green, Colors.blue, Colors.pink],
+                strokeWidth: 1,
+                strokeColor: Colors.white,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

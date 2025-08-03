@@ -45,4 +45,23 @@ class PlayerUsecase {
       }
     }).toList();
   }
+
+  List<PlayerEntity> getTopPlayers({
+    required List<PlayerEntity> playerDatabase,
+    required int? limit,
+  }) {
+    // Sort players by wins and then by matches played
+    final sortedPlayers = List<PlayerEntity>.from(playerDatabase)..sort((a, b) {
+      final winComparison = b.wins.compareTo(a.wins);
+      if (winComparison != 0) return winComparison;
+      return b.matchesPlayed.compareTo(a.matchesPlayed);
+    });
+
+    if (limit == null || limit <= 0) {
+      return sortedPlayers; // Return all players if no limit is set
+    }
+
+    // Return the top players up to the specified limit
+    return sortedPlayers.take(limit).toList();
+  }
 }

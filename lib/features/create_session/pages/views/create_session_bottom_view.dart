@@ -19,7 +19,7 @@ class CreateSessionBottomView extends StatelessWidget {
           final state = context.read<CreateSessionCubit>().state;
 
           if (state.title.isEmpty) {
-            BdToast.error(context, title: 'Nama turnamen tidak boleh kosong.');
+            BdToast.error(context, title: 'Nama sesi tidak boleh kosong.');
 
             return;
           }
