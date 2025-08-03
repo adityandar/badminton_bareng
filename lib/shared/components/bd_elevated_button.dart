@@ -10,6 +10,7 @@ class BdElevatedButton extends StatelessWidget {
     this.foregroundColor,
     this.backgroundColor,
     this.minWidth,
+    this.minHeight,
   });
 
   final VoidCallback onPressed;
@@ -18,16 +19,18 @@ class BdElevatedButton extends StatelessWidget {
   final Color? foregroundColor;
   final Color? backgroundColor;
   final double? minWidth;
+  final double? minHeight;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: minWidth,
+      height: minHeight,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          foregroundColor: foregroundColor,
-          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor ?? Colors.white,
+          backgroundColor: backgroundColor ?? BdColors.primary,
         ),
         child: Text(title, style: textStyle ?? BdTStyles.s12w600),
       ),

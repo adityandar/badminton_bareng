@@ -6,15 +6,17 @@ class BdInkWell extends StatelessWidget {
     super.key,
     this.onTap,
     this.decoration,
-    required this.child,
     this.width,
     this.height,
+    this.padding,
+    required this.child,
   });
 
   final VoidCallback? onTap;
   final BoxDecoration? decoration;
   final double? width;
   final double? height;
+  final EdgeInsets? padding;
   final Widget child;
 
   @override
@@ -23,6 +25,7 @@ class BdInkWell extends StatelessWidget {
       onTap: onTap,
       borderRadius: decoration?.borderRadius as BorderRadius?,
       child: Ink(
+        padding: padding,
         decoration: decoration,
         width: width,
         height: height,
