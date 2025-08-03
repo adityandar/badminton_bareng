@@ -1,3 +1,4 @@
+import 'package:badmintoon/core/core.dart';
 import 'package:badmintoon/dependencies/dependencies.dart';
 import 'package:badmintoon/routers/index.dart';
 import 'package:badmintoon/shared/shared.dart';
@@ -19,13 +20,35 @@ class MainPage extends StatelessWidget {
               child: Text('Badmintoon App', style: BdTStyles.s16w700),
             ),
           ),
-          Center(
-            child: BdElevatedButton(
-              onPressed: () => context.pushRoute(InputPlayerRoute()),
-              title: 'Tap to Start',
-              backgroundColor: BdColors.primary,
-              foregroundColor: Colors.white,
-            ),
+          BlocBuilder<GameplayCubit, GameplayState>(
+            builder: (context, state) {
+              final activeSession = state.activeSession;
+
+              return SizedBox(
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    BdElevatedButton(
+                      onPressed: () => context.pushRoute(CreateSessionRoute()),
+                      title: 'Mulai Bermain',
+                      backgroundColor: BdColors.primary,
+                      foregroundColor: Colors.white,
+                    ),
+                    if (activeSession != null) ...[
+                      Gap(16),
+                      BdElevatedButton(
+                        onPressed: () => context.pushRoute(MatchRoute()),
+                        title: 'Lanjutkan Permainan',
+                        backgroundColor: BdColors.blue,
+                        foregroundColor: Colors.white,
+                      ),
+                    ],
+                  ],
+                ),
+              );
+            },
           ),
         ],
       ),

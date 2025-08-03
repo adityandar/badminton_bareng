@@ -1,4 +1,6 @@
+import 'package:badmintoon/core/core.dart';
 import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badmintoon/domain/domain.dart';
 import 'package:badmintoon/routers/index.dart';
 import 'package:badmintoon/shared/shared.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,14 @@ import 'package:flutter/material.dart';
 import '../cubits/index.dart';
 
 class InputPlayerBottomView extends StatefulWidget {
-  const InputPlayerBottomView({super.key});
+  const InputPlayerBottomView({
+    super.key,
+    required this.gameplayName,
+    required this.matchType,
+  });
+
+  final String gameplayName;
+  final MatchType matchType;
 
   @override
   State<InputPlayerBottomView> createState() => _InputPlayerBottomViewState();
@@ -17,12 +26,7 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
 
   void _addPlayerName() {
     if (textEditingController.text.isEmpty) {
-      toastification.show(
-        context: context,
-        title: Text('Nama pemain tidak boleh kosong'),
-        autoCloseDuration: const Duration(seconds: 5),
-        type: ToastificationType.error,
-      );
+      BdToast.error(context, title: 'Nama pemain tidak boleh kosong.');
 
       return;
     }
@@ -57,17 +61,9 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
               Row(
                 children: [
                   Expanded(
-                    child: TextFormField(
+                    child: BdTextFormField(
                       controller: textEditingController,
-                      decoration: InputDecoration(
-                        hintText: 'Nama Pemain',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
+                      hintText: 'Nama Pemain',
                       onFieldSubmitted: (_) => _addPlayerName(),
                     ),
                   ),
@@ -84,14 +80,19 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
                 title: 'Mulai Pertandingan ($playerAmount Pemain)',
                 onPressed: () {
                   if (playerAmount < 2) {
-                    toastification.show(
-                      context: context,
-                      title: Text('Jumlah pemain minimal 2 orang'),
-                      autoCloseDuration: const Duration(seconds: 5),
-                      type: ToastificationType.error,
+                    BdToast.error(
+                      context,
+                      title: 'Jumlah pemain minimal 2 orang',
                     );
+
                     return;
                   }
+                  context.read<GameplayCubit>().createSession(
+                    playerNames: state.playerNames,
+                    sessionName: widget.gameplayName,
+                    matchType: widget.matchType,
+                    gameMode: GameMode.single,
+                  );
 
                   context.replaceRoute(MatchRoute());
                 },
