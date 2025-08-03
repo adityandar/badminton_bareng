@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 class StringHelper {
   const StringHelper._();
 
@@ -14,5 +16,9 @@ class StringHelper {
     } else {
       return name[0].toUpperCase();
     }
+  }
+
+  static String generateUUID() {
+    return const Uuid().v4();
   }
 }
