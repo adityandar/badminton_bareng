@@ -1,6 +1,9 @@
 export 'package:auto_route/auto_route.dart';
+export 'package:collection/collection.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:gap/gap.dart';
+export 'package:get_it/get_it.dart';
 export 'package:hexcolor/hexcolor.dart';
+export 'package:hydrated_bloc/hydrated_bloc.dart';
 export 'package:toastification/toastification.dart';
