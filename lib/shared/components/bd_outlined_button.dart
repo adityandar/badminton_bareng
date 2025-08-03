@@ -1,8 +1,8 @@
 import 'package:badmintoon/shared/shared.dart';
 import 'package:flutter/material.dart';
 
-class BdElevatedButton extends StatelessWidget {
-  const BdElevatedButton({
+class BdOutlinedButton extends StatelessWidget {
+  const BdOutlinedButton({
     super.key,
     required this.onPressed,
     required this.title,
@@ -29,13 +29,14 @@ class BdElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          foregroundColor: foregroundColor ?? Colors.white,
-          backgroundColor: backgroundColor ?? BdColors.primary,
+          foregroundColor: foregroundColor ?? BdColors.primary,
+          backgroundColor: backgroundColor ?? BdColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1000),
+            side: BorderSide(color: foregroundColor ?? BdColors.primary),
           ),
         ),
-        child: Text(title, style: textStyle ?? BdTStyles.s14w600),
+        child: Text(title, style: textStyle ?? BdTStyles.s12w600),
       ),
     );
   }

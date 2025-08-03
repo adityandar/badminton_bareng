@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 import '../cubits/index.dart';
 
-class MatchListener extends BlocListener<MatchCubit, MatchState> {
-  const MatchListener({super.key, required super.child})
+class MatchFinishedListener extends BlocListener<MatchCubit, MatchState> {
+  const MatchFinishedListener({super.key, required super.child})
     : super(listenWhen: _listenWhen, listener: _listen);
 
   static bool _listenWhen(MatchState previous, MatchState current) {
-    return previous.match == null && current.match != null;
+    return previous.match?.winner == null && current.match?.winner != null;
   }
 
   static void _listen(BuildContext context, MatchState state) {
-    if (state.match != null) {
-      context.read<GameplayCubit>().upsertMatch(state.match!);
+    if (state.match?.winner != null) {
+      context.read<GameplayCubit>().completeMatch(state.match!);
     }
   }
 }

@@ -1,9 +1,32 @@
+import 'package:badmintoon/core/core.dart';
 import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badmintoon/domain/domain.dart';
+import 'package:badmintoon/features/match/cubits/match_cubit.dart';
+import 'package:badmintoon/features/result/index.dart';
 import 'package:badmintoon/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class MatchBottomView extends StatelessWidget {
   const MatchBottomView({super.key});
+
+  Future<void> _submitMatchResult(
+    BuildContext context, {
+    required TeamEnum winner,
+  }) async {
+    final gameplayCubit = context.read<GameplayCubit>();
+    final matchCubit = context.read<MatchCubit>();
+    matchCubit.completeMatch(winner);
+
+    final action = await MatchResultDialog.show(context, winner: winner);
+    if (action == MatchResultDialogActionType.continueGame) {
+      final match = gameplayCubit.createMatch();
+      matchCubit.setNewMatch(match);
+    } else if (action == MatchResultDialogActionType.viewStatistics) {
+      // Handle view statistics action
+    } else if (action == MatchResultDialogActionType.finish) {
+      // Handle finish action
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +44,7 @@ class MatchBottomView extends StatelessWidget {
             Expanded(
               child: BdInkWell(
                 onTap: () {
-                  // Handle left team win
+                  _submitMatchResult(context, winner: TeamEnum.red);
                 },
                 height: MediaQuery.of(context).size.height * 0.2,
                 decoration: BoxDecoration(color: BdColors.red),
@@ -36,7 +59,7 @@ class MatchBottomView extends StatelessWidget {
             Expanded(
               child: BdInkWell(
                 onTap: () {
-                  // Handle right team win
+                  _submitMatchResult(context, winner: TeamEnum.blue);
                 },
                 height: MediaQuery.of(context).size.height * 0.2,
                 decoration: BoxDecoration(color: BdColors.blue),

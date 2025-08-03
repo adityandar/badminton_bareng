@@ -2,17 +2,27 @@ import 'package:badmintoon/domain/domain.dart';
 import 'package:badmintoon/utils/utils.dart';
 
 class MatchUsecase {
+  List<MatchEntity> updateMatchesDataAfterMatch({
+    required List<MatchEntity> matchDatabase,
+    required MatchEntity completedMatch,
+  }) {
+    return matchDatabase.map((match) {
+      if (match.id == completedMatch.id) {
+        return completedMatch;
+      }
+
+      return match;
+    }).toList();
+  }
+
   MatchEntity createMatch({
     required int index,
     required List<PlayerEntity> players,
     required GameMode gameMode,
     required MatchType matchType,
-    MatchEntity? lastMatch,
+    required MatchEntity? lastMatch,
   }) {
-    final playersPerTeam = switch (gameMode) {
-      GameMode.single => 1,
-      GameMode.double => 2,
-    };
+    final playersPerTeam = gameMode.playersPerTeam;
 
     final redPlayers = <PlayerEntity>[];
     final bluePlayers = <PlayerEntity>[];

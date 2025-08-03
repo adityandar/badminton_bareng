@@ -22,32 +22,24 @@ class _MatchPageState extends State<MatchPage> {
   @override
   void initState() {
     super.initState();
-    matchCubit = MatchCubit();
-    final currentSession = context.read<GameplayCubit>().state.activeSession;
+    _onInit();
+  }
 
-    if (currentSession == null) {
-      if (mounted) {
+  void _onInit() {
+    if (mounted) {
+      try {
+        final gameplayCubit = context.read<GameplayCubit>();
+        final match = gameplayCubit.createMatch();
+
+        matchCubit = MatchCubit(match: match);
+      } catch (e) {
         BdToast.error(
           context,
-          title: 'Tidak ada sesi permainan aktif',
-          description: 'Kembali ke menu utama',
+          title: 'Terdapat kesalahan',
+          description: e.toString(),
         );
         context.popUntilRootThenReplaceRoute(MainRoute());
       }
-
-      return;
-    }
-    final activeMatch = currentSession.activeMatch;
-
-    if (activeMatch != null) {
-      matchCubit.useMatch(activeMatch);
-    } else {
-      matchCubit.createMatch(
-        index: currentSession.matches.length,
-        players: currentSession.players,
-        gameMode: currentSession.gameMode,
-        matchType: currentSession.matchType,
-      );
     }
   }
 

@@ -1,5 +1,6 @@
 export 'package:auto_route/auto_route.dart';
 export 'package:collection/collection.dart';
+export 'package:confetti/confetti.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:gap/gap.dart';

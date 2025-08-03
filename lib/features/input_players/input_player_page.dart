@@ -12,10 +12,12 @@ class InputPlayerPage extends StatelessWidget {
     super.key,
     required this.gameplayName,
     required this.matchType,
+    required this.gameMode,
   });
 
   final String gameplayName;
   final MatchType matchType;
+  final GameMode gameMode;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class InputPlayerPage extends StatelessWidget {
         bottomNavigationBar: InputPlayerBottomView(
           gameplayName: gameplayName,
           matchType: matchType,
+          gameMode: gameMode,
         ),
         body: InputPlayerListView(),
       ),

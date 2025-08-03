@@ -25,22 +25,66 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
     emit(state.copyWith(activeSession: session));
   }
 
-  void upsertMatch(MatchEntity match) {
+  MatchEntity createMatch() {
     final currentSession = state.activeSession;
     if (currentSession == null) {
-      return;
+      throw Exception('No active gameplay session found');
     }
 
-    // When updating the match, we remove the old match and add the updated one.
-    // We reorder the matches based on their index to maintain the order.
-    final updatedMatches =
-        List<MatchEntity>.from(currentSession.matches)
-          ..removeWhere((m) => m.id == match.id)
-          ..add(match)
-          ..sort((a, b) => a.index.compareTo(b.index));
+    final activeMatch = currentSession.activeMatch;
+    if (activeMatch != null) {
+      return activeMatch;
+    }
 
-    final updatedSession = currentSession.copyWith(matches: updatedMatches);
-    emit(state.copyWith(activeSession: updatedSession));
+    final match = getIt<MatchUsecase>().createMatch(
+      index: currentSession.matches.length,
+      players: currentSession.players,
+      gameMode: currentSession.gameMode,
+      matchType: currentSession.matchType,
+      lastMatch: currentSession.lastCompletedMatch,
+    );
+
+    final updatedMatches = [...currentSession.matches, match];
+
+    emit(
+      state.copyWith(
+        activeSession: currentSession.copyWith(matches: updatedMatches),
+      ),
+    );
+
+    return match;
+  }
+
+  void completeMatch(MatchEntity completedMatch) {
+    final currentSession = state.activeSession;
+
+    if (currentSession == null) {
+      throw Exception('No active gameplay session found');
+    }
+    if (completedMatch.winner == null) {
+      throw Exception('Match must have a winner to be completed');
+    }
+
+    final updatedPlayers = getIt<PlayerUsecase>().updatePlayersDataAfterMatch(
+      playerDatabase: currentSession.players,
+      redPlayerIds: completedMatch.redPlayerIds,
+      bluePlayerIds: completedMatch.bluePlayerIds,
+      winner: completedMatch.winner!,
+    );
+
+    final updatedMatches = getIt<MatchUsecase>().updateMatchesDataAfterMatch(
+      matchDatabase: currentSession.matches,
+      completedMatch: completedMatch,
+    );
+
+    emit(
+      state.copyWith(
+        activeSession: currentSession.copyWith(
+          players: updatedPlayers,
+          matches: updatedMatches,
+        ),
+      ),
+    );
   }
 
   @override

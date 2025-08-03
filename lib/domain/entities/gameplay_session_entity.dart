@@ -21,6 +21,8 @@ class GameplaySessionEntity with _$GameplaySessionEntity {
 
   MatchEntity? get activeMatch =>
       matches.firstWhereOrNull((match) => !match.isCompleted);
+  MatchEntity? get lastCompletedMatch =>
+      matches.where((match) => match.isCompleted).lastOrNull;
 
   @override
   final String? sessionId;

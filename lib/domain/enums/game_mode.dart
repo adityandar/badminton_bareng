@@ -5,6 +5,11 @@ enum GameMode {
   single,
   double;
 
+  int get playersPerTeam => switch (this) {
+    GameMode.single => 1,
+    GameMode.double => 2,
+  };
+
   String get text {
     switch (this) {
       case GameMode.single:

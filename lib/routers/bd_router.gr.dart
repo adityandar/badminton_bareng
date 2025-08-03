@@ -42,6 +42,7 @@ class InputPlayerRoute extends _i5.PageRouteInfo<InputPlayerRouteArgs> {
     _i6.Key? key,
     required String gameplayName,
     required _i7.MatchType matchType,
+    required _i7.GameMode gameMode,
     List<_i5.PageRouteInfo>? children,
   }) : super(
          InputPlayerRoute.name,
@@ -49,6 +50,7 @@ class InputPlayerRoute extends _i5.PageRouteInfo<InputPlayerRouteArgs> {
            key: key,
            gameplayName: gameplayName,
            matchType: matchType,
+           gameMode: gameMode,
          ),
          initialChildren: children,
        );
@@ -63,6 +65,7 @@ class InputPlayerRoute extends _i5.PageRouteInfo<InputPlayerRouteArgs> {
         key: args.key,
         gameplayName: args.gameplayName,
         matchType: args.matchType,
+        gameMode: args.gameMode,
       );
     },
   );
@@ -73,6 +76,7 @@ class InputPlayerRouteArgs {
     this.key,
     required this.gameplayName,
     required this.matchType,
+    required this.gameMode,
   });
 
   final _i6.Key? key;
@@ -81,9 +85,11 @@ class InputPlayerRouteArgs {
 
   final _i7.MatchType matchType;
 
+  final _i7.GameMode gameMode;
+
   @override
   String toString() {
-    return 'InputPlayerRouteArgs{key: $key, gameplayName: $gameplayName, matchType: $matchType}';
+    return 'InputPlayerRouteArgs{key: $key, gameplayName: $gameplayName, matchType: $matchType, gameMode: $gameMode}';
   }
 
   @override
@@ -92,11 +98,16 @@ class InputPlayerRouteArgs {
     if (other is! InputPlayerRouteArgs) return false;
     return key == other.key &&
         gameplayName == other.gameplayName &&
-        matchType == other.matchType;
+        matchType == other.matchType &&
+        gameMode == other.gameMode;
   }
 
   @override
-  int get hashCode => key.hashCode ^ gameplayName.hashCode ^ matchType.hashCode;
+  int get hashCode =>
+      key.hashCode ^
+      gameplayName.hashCode ^
+      matchType.hashCode ^
+      gameMode.hashCode;
 }
 
 /// generated route for

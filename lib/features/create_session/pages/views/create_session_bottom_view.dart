@@ -42,6 +42,7 @@ class CreateSessionBottomView extends StatelessWidget {
             InputPlayerRoute(
               gameplayName: state.title,
               matchType: state.matchType!,
+              gameMode: state.gameMode!,
             ),
           );
         },

@@ -12,10 +12,12 @@ class InputPlayerBottomView extends StatefulWidget {
     super.key,
     required this.gameplayName,
     required this.matchType,
+    required this.gameMode,
   });
 
   final String gameplayName;
   final MatchType matchType;
+  final GameMode gameMode;
 
   @override
   State<InputPlayerBottomView> createState() => _InputPlayerBottomViewState();
@@ -79,10 +81,13 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
                 minWidth: MediaQuery.of(context).size.width,
                 title: 'Mulai Pertandingan ($playerAmount Pemain)',
                 onPressed: () {
-                  if (playerAmount < 2) {
+                  final playersPerTeam = widget.gameMode.playersPerTeam;
+                  final requiredPlayers = playersPerTeam * 2;
+
+                  if (playerAmount < requiredPlayers) {
                     BdToast.error(
                       context,
-                      title: 'Jumlah pemain minimal 2 orang',
+                      title: 'Jumlah pemain minimal $requiredPlayers orang',
                     );
 
                     return;
@@ -91,7 +96,7 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
                     playerNames: state.playerNames,
                     sessionName: widget.gameplayName,
                     matchType: widget.matchType,
-                    gameMode: GameMode.single,
+                    gameMode: widget.gameMode,
                   );
 
                   context.replaceRoute(MatchRoute());

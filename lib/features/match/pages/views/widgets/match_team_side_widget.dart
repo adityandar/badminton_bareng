@@ -52,6 +52,9 @@ class MatchTeamSideWidget extends StatelessWidget {
           ...playerNames.map(
             (player) => Text(
               player,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: BdTStyles.s14w400.copyWith(color: BdColors.white),
             ),
           ),
