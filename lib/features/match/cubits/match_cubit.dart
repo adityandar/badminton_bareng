@@ -13,7 +13,7 @@ class MatchCubit extends Cubit<MatchState> {
     required GameMode gameMode,
     required MatchType matchType,
   }) {
-    final match = getIt<GameplayUsecase>().createMatch(
+    final match = getIt<MatchUsecase>().createMatch(
       index: index,
       players: players,
       gameMode: gameMode,

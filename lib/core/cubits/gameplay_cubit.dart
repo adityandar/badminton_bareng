@@ -14,9 +14,9 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
     required GameMode gameMode,
   }) {
     final players =
-        playerNames.map(getIt<GameplayUsecase>().createPlayer).toList();
+        playerNames.map(getIt<PlayerUsecase>().createPlayer).toList();
 
-    final session = getIt<GameplayUsecase>().createSession(
+    final session = getIt<GameplaySessionUsecase>().createSession(
       players: players,
       name: sessionName,
       matchType: matchType,

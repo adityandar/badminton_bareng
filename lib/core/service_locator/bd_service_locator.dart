@@ -9,6 +9,9 @@ class BdServiceLocator {
   }
 
   static void _initUsecases() {
-    getIt.registerLazySingleton(GameplayUsecase.new);
+    getIt
+      ..registerLazySingleton(GameplaySessionUsecase.new)
+      ..registerLazySingleton(MatchUsecase.new)
+      ..registerLazySingleton(PlayerUsecase.new);
   }
 }

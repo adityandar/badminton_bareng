@@ -41,7 +41,7 @@ class _CreateSessionBodyViewState extends State<CreateSessionBodyView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Nama Turnamen', style: BdTStyles.s14w500),
+              Text('Nama Sesi', style: BdTStyles.s14w500),
               Gap(8),
               BdTextFormField(controller: textEditingController),
               Gap(24),

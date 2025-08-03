@@ -14,6 +14,7 @@ class CreateSessionBottomView extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: BdElevatedButton(
         minHeight: 48,
+        textStyle: BdTStyles.s16w700,
         onPressed: () {
           final state = context.read<CreateSessionCubit>().state;
 
@@ -44,7 +45,7 @@ class CreateSessionBottomView extends StatelessWidget {
             ),
           );
         },
-        title: 'Buat Sesi',
+        title: 'Mulai Permainan',
       ),
     );
   }

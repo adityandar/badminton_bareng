@@ -85,8 +85,7 @@ class _GameModeSwitcherPartWidget extends StatelessWidget {
         child: Text(
           gameMode.text,
           style: BdTStyles.s14w500.copyWith(
-            color:
-                isSelected ? Colors.white : BdColors.darkGrey.withOpacity(0.6),
+            color: isSelected ? Colors.white : BdColors.darkGrey.withAlpha(60),
             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
           ),
         ),

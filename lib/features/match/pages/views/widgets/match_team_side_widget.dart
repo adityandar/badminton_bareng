@@ -49,14 +49,12 @@ class MatchTeamSideWidget extends StatelessWidget {
             style: BdTStyles.s16w700.copyWith(color: BdColors.white),
           ),
           Divider(color: BdColors.white),
-          ...playerNames
-              .map(
-                (player) => Text(
-                  player,
-                  style: BdTStyles.s14w400.copyWith(color: BdColors.white),
-                ),
-              )
-              .toList(),
+          ...playerNames.map(
+            (player) => Text(
+              player,
+              style: BdTStyles.s14w400.copyWith(color: BdColors.white),
+            ),
+          ),
         ],
       ),
     );
