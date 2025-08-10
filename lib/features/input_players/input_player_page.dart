@@ -24,6 +24,7 @@ class InputPlayerPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => InputPlayerCubit(),
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: BdAppBar(title: 'Isi Daftar Pemain'),
         bottomNavigationBar: InputPlayerBottomView(
           gameplayName: gameplayName,

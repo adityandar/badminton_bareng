@@ -27,7 +27,8 @@ class MatchBottomView extends StatelessWidget {
     } else if (action == MatchResultDialogActionType.viewStatistics) {
       context.replaceRoute(LeaderboardRoute());
     } else if (action == MatchResultDialogActionType.finish) {
-      // Handle finish action
+      context.read<GameplayCubit>().finishSession();
+      context.replaceRoute(LeaderboardRoute());
     }
   }
 

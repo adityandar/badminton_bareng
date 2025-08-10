@@ -33,17 +33,31 @@ class MainBottomView extends StatelessWidget {
               ),
               if (activeSession != null) ...[
                 Gap(16),
-                BdElevatedButton(
-                  onPressed: () => context.pushRoute(MatchRoute()),
-                  title: 'Lanjutkan Permainan',
-                  backgroundColor: BdColors.blue,
-                  foregroundColor: Colors.white,
-                  minWidth: double.infinity,
-                  minHeight: 48,
-                  textStyle: BdTStyles.s16w700.copyWith(
-                    fontWeight: FontWeight.w900,
+                if (activeSession.state.isOngoing) ...[
+                  BdElevatedButton(
+                    onPressed: () => context.pushRoute(MatchRoute()),
+                    title: 'Lanjutkan Permainan',
+                    backgroundColor: BdColors.blue,
+                    foregroundColor: Colors.white,
+                    minWidth: double.infinity,
+                    minHeight: 48,
+                    textStyle: BdTStyles.s16w700.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
-                ),
+                ] else ...[
+                  BdElevatedButton(
+                    onPressed: () => context.pushRoute(LeaderboardRoute()),
+                    title: 'Lihat Hasil Terakhir',
+                    backgroundColor: BdColors.blue,
+                    foregroundColor: Colors.white,
+                    minWidth: double.infinity,
+                    minHeight: 48,
+                    textStyle: BdTStyles.s16w700.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
               ],
             ],
           ),
