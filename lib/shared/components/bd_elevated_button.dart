@@ -35,7 +35,11 @@ class BdElevatedButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(1000),
           ),
         ),
-        child: Text(title, style: textStyle ?? BdTStyles.s14w600),
+        child: Text(
+          title,
+          style: textStyle ?? BdTStyles.s14w600,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

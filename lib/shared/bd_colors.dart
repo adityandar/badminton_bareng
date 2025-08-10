@@ -6,6 +6,8 @@ class BdColors {
   static final white = HexColor('#FFFFFF');
   static final primary = HexColor('#009E60');
 
+  static final subtleGreen = HexColor('#4CBF99');
+
   static final red = HexColor('#E74C3C');
   static final playfulRed = HexColor('#FF6B6B');
 

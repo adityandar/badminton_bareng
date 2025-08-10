@@ -28,7 +28,6 @@ class InputPlayerListView extends StatelessWidget {
           itemCount: playerNames.length,
           itemBuilder: (context, index) {
             final name = playerNames[index];
-            final initial = StringHelper.initial(name, 2);
 
             return DbDismissible(
               key: Key(name),
@@ -37,19 +36,7 @@ class InputPlayerListView extends StatelessWidget {
               },
               child: ListTile(
                 title: Text(name.toTitleCase(), style: BdTStyles.s16w400),
-                leading: Container(
-                  width: 24,
-                  height: 24,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: BdColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Text(
-                    initial,
-                    style: BdTStyles.s10w600.copyWith(color: Colors.white),
-                  ),
-                ),
+                leading: BdCircleAvatar(name: name, size: 24),
               ),
             );
           },

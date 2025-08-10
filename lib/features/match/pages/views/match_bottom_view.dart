@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:badmintoon/core/core.dart';
 import 'package:badmintoon/dependencies/dependencies.dart';
 import 'package:badmintoon/domain/domain.dart';
 import 'package:badmintoon/features/match/cubits/match_cubit.dart';
 import 'package:badmintoon/features/result/index.dart';
+import 'package:badmintoon/routers/index.dart';
 import 'package:badmintoon/shared/shared.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +25,7 @@ class MatchBottomView extends StatelessWidget {
       final match = gameplayCubit.createMatch();
       matchCubit.setNewMatch(match);
     } else if (action == MatchResultDialogActionType.viewStatistics) {
-      // Handle view statistics action
+      context.replaceRoute(LeaderboardRoute());
     } else if (action == MatchResultDialogActionType.finish) {
       // Handle finish action
     }

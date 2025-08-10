@@ -162,6 +162,7 @@ class MatchUsecase {
         redPlayers: redPlayers,
         bluePlayers: bluePlayers,
       );
+
       return;
     }
 
@@ -188,6 +189,7 @@ class MatchUsecase {
           ..sort((a, b) => a.matchesPlayed.compareTo(b.matchesPlayed));
 
     // Pick the opponents based on the required number per team
+    candidateOpponents.shuffle();
     final opponents = candidateOpponents.take(playersPerTeam).toList();
 
     // Assign the opponent team to the opposite side

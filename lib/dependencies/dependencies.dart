@@ -1,4 +1,5 @@
 export 'package:auto_route/auto_route.dart';
+export 'package:auto_size_text/auto_size_text.dart';
 export 'package:collection/collection.dart';
 export 'package:confetti/confetti.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,4 +8,6 @@ export 'package:gap/gap.dart';
 export 'package:get_it/get_it.dart';
 export 'package:hexcolor/hexcolor.dart';
 export 'package:hydrated_bloc/hydrated_bloc.dart';
+export 'package:image_downloader_web/image_downloader_web.dart';
+export 'package:screenshot/screenshot.dart';
 export 'package:toastification/toastification.dart';

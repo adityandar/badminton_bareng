@@ -43,7 +43,10 @@ class _CreateSessionBodyViewState extends State<CreateSessionBodyView> {
             children: [
               Text('Nama Sesi', style: BdTStyles.s14w500),
               Gap(8),
-              BdTextFormField(controller: textEditingController),
+              BdTextFormField(
+                controller: textEditingController,
+                autofocus: true,
+              ),
               Gap(24),
               Text('Mode Game', style: BdTStyles.s14w500),
               Gap(8),

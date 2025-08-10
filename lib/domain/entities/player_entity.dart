@@ -14,6 +14,14 @@ class PlayerEntity with _$PlayerEntity {
     required this.losses,
   });
 
+  factory PlayerEntity.mock() => PlayerEntity(
+    id: '',
+    name: 'Mock Player',
+    matchesPlayed: 0,
+    wins: 0,
+    losses: 0,
+  );
+
   @override
   final String id;
   @override

@@ -9,25 +9,27 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:badmintoon/domain/domain.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:badmintoon/domain/domain.dart' as _i8;
 import 'package:badmintoon/features/create_session/pages/create_session_page.dart'
     as _i1;
 import 'package:badmintoon/features/input_players/input_player_page.dart'
     as _i2;
-import 'package:badmintoon/features/main/main_page.dart' as _i3;
-import 'package:badmintoon/features/match/pages/match_page.dart' as _i4;
-import 'package:flutter/material.dart' as _i6;
+import 'package:badmintoon/features/leaderboard/pages/leaderboard_page.dart'
+    as _i3;
+import 'package:badmintoon/features/main/main_page.dart' as _i4;
+import 'package:badmintoon/features/match/pages/match_page.dart' as _i5;
+import 'package:flutter/material.dart' as _i7;
 
 /// generated route for
 /// [_i1.CreateSessionPage]
-class CreateSessionRoute extends _i5.PageRouteInfo<void> {
-  const CreateSessionRoute({List<_i5.PageRouteInfo>? children})
+class CreateSessionRoute extends _i6.PageRouteInfo<void> {
+  const CreateSessionRoute({List<_i6.PageRouteInfo>? children})
     : super(CreateSessionRoute.name, initialChildren: children);
 
   static const String name = 'CreateSessionRoute';
 
-  static _i5.PageInfo page = _i5.PageInfo(
+  static _i6.PageInfo page = _i6.PageInfo(
     name,
     builder: (data) {
       return const _i1.CreateSessionPage();
@@ -37,13 +39,13 @@ class CreateSessionRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.InputPlayerPage]
-class InputPlayerRoute extends _i5.PageRouteInfo<InputPlayerRouteArgs> {
+class InputPlayerRoute extends _i6.PageRouteInfo<InputPlayerRouteArgs> {
   InputPlayerRoute({
-    _i6.Key? key,
+    _i7.Key? key,
     required String gameplayName,
-    required _i7.MatchType matchType,
-    required _i7.GameMode gameMode,
-    List<_i5.PageRouteInfo>? children,
+    required _i8.MatchType matchType,
+    required _i8.GameMode gameMode,
+    List<_i6.PageRouteInfo>? children,
   }) : super(
          InputPlayerRoute.name,
          args: InputPlayerRouteArgs(
@@ -57,7 +59,7 @@ class InputPlayerRoute extends _i5.PageRouteInfo<InputPlayerRouteArgs> {
 
   static const String name = 'InputPlayerRoute';
 
-  static _i5.PageInfo page = _i5.PageInfo(
+  static _i6.PageInfo page = _i6.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<InputPlayerRouteArgs>();
@@ -79,13 +81,13 @@ class InputPlayerRouteArgs {
     required this.gameMode,
   });
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   final String gameplayName;
 
-  final _i7.MatchType matchType;
+  final _i8.MatchType matchType;
 
-  final _i7.GameMode gameMode;
+  final _i8.GameMode gameMode;
 
   @override
   String toString() {
@@ -111,33 +113,49 @@ class InputPlayerRouteArgs {
 }
 
 /// generated route for
-/// [_i3.MainPage]
-class MainRoute extends _i5.PageRouteInfo<void> {
-  const MainRoute({List<_i5.PageRouteInfo>? children})
-    : super(MainRoute.name, initialChildren: children);
+/// [_i3.LeaderboardPage]
+class LeaderboardRoute extends _i6.PageRouteInfo<void> {
+  const LeaderboardRoute({List<_i6.PageRouteInfo>? children})
+    : super(LeaderboardRoute.name, initialChildren: children);
 
-  static const String name = 'MainRoute';
+  static const String name = 'LeaderboardRoute';
 
-  static _i5.PageInfo page = _i5.PageInfo(
+  static _i6.PageInfo page = _i6.PageInfo(
     name,
     builder: (data) {
-      return const _i3.MainPage();
+      return const _i3.LeaderboardPage();
     },
   );
 }
 
 /// generated route for
-/// [_i4.MatchPage]
-class MatchRoute extends _i5.PageRouteInfo<void> {
-  const MatchRoute({List<_i5.PageRouteInfo>? children})
+/// [_i4.MainPage]
+class MainRoute extends _i6.PageRouteInfo<void> {
+  const MainRoute({List<_i6.PageRouteInfo>? children})
+    : super(MainRoute.name, initialChildren: children);
+
+  static const String name = 'MainRoute';
+
+  static _i6.PageInfo page = _i6.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.MainPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i5.MatchPage]
+class MatchRoute extends _i6.PageRouteInfo<void> {
+  const MatchRoute({List<_i6.PageRouteInfo>? children})
     : super(MatchRoute.name, initialChildren: children);
 
   static const String name = 'MatchRoute';
 
-  static _i5.PageInfo page = _i5.PageInfo(
+  static _i6.PageInfo page = _i6.PageInfo(
     name,
     builder: (data) {
-      return const _i4.MatchPage();
+      return const _i5.MatchPage();
     },
   );
 }

@@ -11,6 +11,8 @@ class BdOutlinedButton extends StatelessWidget {
     this.backgroundColor,
     this.minWidth,
     this.minHeight,
+    this.isLoading = false,
+    this.isEnabled = true,
   });
 
   final VoidCallback onPressed;
@@ -20,6 +22,8 @@ class BdOutlinedButton extends StatelessWidget {
   final Color? backgroundColor;
   final double? minWidth;
   final double? minHeight;
+  final bool isLoading;
+  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +31,28 @@ class BdOutlinedButton extends StatelessWidget {
       width: minWidth,
       height: minHeight,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isEnabled && !isLoading ? onPressed : null,
         style: ElevatedButton.styleFrom(
           foregroundColor: foregroundColor ?? BdColors.primary,
           backgroundColor: backgroundColor ?? BdColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(1000),
-            side: BorderSide(color: foregroundColor ?? BdColors.primary),
+            side: BorderSide(
+              color:
+                  isEnabled
+                      ? (foregroundColor ?? BdColors.primary)
+                      : Colors.transparent,
+            ),
           ),
         ),
-        child: Text(title, style: textStyle ?? BdTStyles.s12w600),
+        child:
+            isLoading
+                ? Center(child: CircularProgressIndicator())
+                : Text(
+                  title,
+                  style: textStyle ?? BdTStyles.s12w600,
+                  textAlign: TextAlign.center,
+                ),
       ),
     );
   }

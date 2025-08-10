@@ -9,5 +9,6 @@ class BdRouter extends RootStackRouter {
     AutoRoute(page: InputPlayerRoute.page),
     AutoRoute(page: MatchRoute.page),
     AutoRoute(page: CreateSessionRoute.page),
+    AutoRoute(page: LeaderboardRoute.page),
   ];
 }

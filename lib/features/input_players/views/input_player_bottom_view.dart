@@ -25,6 +25,20 @@ class InputPlayerBottomView extends StatefulWidget {
 
 class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
   final textEditingController = TextEditingController();
+  late final FocusNode focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
 
   void _addPlayerName() {
     if (textEditingController.text.isEmpty) {
@@ -66,7 +80,12 @@ class _InputPlayerBottomViewState extends State<InputPlayerBottomView> {
                     child: BdTextFormField(
                       controller: textEditingController,
                       hintText: 'Nama Pemain',
-                      onFieldSubmitted: (_) => _addPlayerName(),
+                      autofocus: true,
+                      focusNode: focusNode,
+                      onFieldSubmitted: (_) {
+                        _addPlayerName();
+                        focusNode.requestFocus();
+                      },
                     ),
                   ),
                   Gap(16),

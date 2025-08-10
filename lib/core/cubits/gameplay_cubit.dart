@@ -25,6 +25,19 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
     emit(state.copyWith(activeSession: session));
   }
 
+  void finishSession() {
+    final updatedSession = state.activeSession?.copyWith(
+      state: GameplaySessionState.finished,
+      updatedAt: DateTime.now(),
+    );
+
+    emit(state.copyWith(activeSession: updatedSession));
+  }
+
+  void resetSession() {
+    emit(state.copyWith(activeSession: null));
+  }
+
   MatchEntity createMatch() {
     final currentSession = state.activeSession;
     if (currentSession == null) {
@@ -48,7 +61,10 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
 
     emit(
       state.copyWith(
-        activeSession: currentSession.copyWith(matches: updatedMatches),
+        activeSession: currentSession.copyWith(
+          matches: updatedMatches,
+          updatedAt: DateTime.now(),
+        ),
       ),
     );
 
@@ -82,12 +98,13 @@ class GameplayCubit extends HydratedCubit<GameplayState> {
         activeSession: currentSession.copyWith(
           players: updatedPlayers,
           matches: updatedMatches,
+          updatedAt: DateTime.now(),
         ),
       ),
     );
   }
 
-  List<PlayerEntity> getTopPlayers(int limit) {
+  List<PlayerEntity> getTopPlayers([int? limit]) {
     final currentSession = state.activeSession;
     if (currentSession == null) {
       return [];

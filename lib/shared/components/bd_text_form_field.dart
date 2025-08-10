@@ -5,6 +5,8 @@ class BdTextFormField extends TextFormField {
     super.key,
     super.controller,
     super.onFieldSubmitted,
+    super.autofocus,
+    super.focusNode,
     String? hintText,
     String? labelText,
   }) : super(
