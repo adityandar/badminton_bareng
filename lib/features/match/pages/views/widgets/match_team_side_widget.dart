@@ -1,4 +1,4 @@
-import 'package:badmintoon/shared/shared.dart';
+import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class MatchTeamSideWidget extends StatelessWidget {

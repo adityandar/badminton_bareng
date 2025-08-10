@@ -1,5 +1,5 @@
-import 'package:badmintoon/shared/shared.dart';
-import 'package:badmintoon/utils/utils.dart';
+import 'package:badminton_bareng/shared/shared.dart';
+import 'package:badminton_bareng/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class BdCircleAvatar extends StatelessWidget {

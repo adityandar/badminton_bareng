@@ -1,5 +1,5 @@
-import 'package:badmintoon/domain/domain.dart';
-import 'package:badmintoon/utils/utils.dart';
+import 'package:badminton_bareng/domain/domain.dart';
+import 'package:badminton_bareng/utils/utils.dart';
 
 class GameplaySessionUsecase {
   GameplaySessionEntity createSession({

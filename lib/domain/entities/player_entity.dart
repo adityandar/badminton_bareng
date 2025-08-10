@@ -1,4 +1,4 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
 
 part 'player_entity.freezed.dart';
 part 'player_entity.g.dart';

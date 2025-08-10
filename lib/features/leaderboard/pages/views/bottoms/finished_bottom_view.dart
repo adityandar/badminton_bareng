@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:badmintoon/core/core.dart';
-import 'package:badmintoon/dependencies/dependencies.dart';
-import 'package:badmintoon/routers/index.dart';
-import 'package:badmintoon/shared/shared.dart';
+import 'package:badminton_bareng/core/core.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
+import 'package:badminton_bareng/routers/index.dart';
+import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 import '../../../cubits/index.dart';

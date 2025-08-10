@@ -1,7 +1,7 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
-import 'package:badmintoon/domain/domain.dart';
-import 'package:badmintoon/shared/shared.dart';
-import 'package:badmintoon/utils/utils.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
+import 'package:badminton_bareng/domain/domain.dart';
+import 'package:badminton_bareng/shared/shared.dart';
+import 'package:badminton_bareng/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class PlayerRankingItemWidget extends StatelessWidget {

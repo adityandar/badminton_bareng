@@ -1,5 +1,5 @@
-import 'package:badmintoon/domain/domain.dart';
-import 'package:badmintoon/shared/shared.dart';
+import 'package:badminton_bareng/domain/domain.dart';
+import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class GameModeSwitcherWidget extends StatelessWidget {

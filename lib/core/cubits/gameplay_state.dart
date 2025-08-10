@@ -1,5 +1,5 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
-import 'package:badmintoon/domain/domain.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
+import 'package:badminton_bareng/domain/domain.dart';
 
 part 'gameplay_state.freezed.dart';
 part 'gameplay_state.g.dart';

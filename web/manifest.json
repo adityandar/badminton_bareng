@@ -1,11 +1,11 @@
 {
-    "name": "badmintoon",
-    "short_name": "badmintoon",
+    "name": "Badminton Bareng",
+    "short_name": "Badminton Bareng",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#009E60",
+    "theme_color": "#009E60",
+    "description": "A Flutter web and mobile app for organizing badminton games, randomizing matches, tracking scores, and sharing results.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

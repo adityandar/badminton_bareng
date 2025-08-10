@@ -1,6 +1,6 @@
-import 'package:badmintoon/core/service_locator/bd_service_locator.dart';
-import 'package:badmintoon/dependencies/dependencies.dart';
-import 'package:badmintoon/domain/domain.dart';
+import 'package:badminton_bareng/core/service_locator/bd_service_locator.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
+import 'package:badminton_bareng/domain/domain.dart';
 
 import 'gameplay_state.dart';
 

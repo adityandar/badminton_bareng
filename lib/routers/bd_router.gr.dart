@@ -10,15 +10,15 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:badmintoon/domain/domain.dart' as _i8;
-import 'package:badmintoon/features/create_session/pages/create_session_page.dart'
+import 'package:badminton_bareng/domain/domain.dart' as _i8;
+import 'package:badminton_bareng/features/create_session/pages/create_session_page.dart'
     as _i1;
-import 'package:badmintoon/features/input_players/input_player_page.dart'
+import 'package:badminton_bareng/features/input_players/input_player_page.dart'
     as _i2;
-import 'package:badmintoon/features/leaderboard/pages/leaderboard_page.dart'
+import 'package:badminton_bareng/features/leaderboard/pages/leaderboard_page.dart'
     as _i3;
-import 'package:badmintoon/features/main/main_page.dart' as _i4;
-import 'package:badmintoon/features/match/pages/match_page.dart' as _i5;
+import 'package:badminton_bareng/features/main/main_page.dart' as _i4;
+import 'package:badminton_bareng/features/match/pages/match_page.dart' as _i5;
 import 'package:flutter/material.dart' as _i7;
 
 /// generated route for

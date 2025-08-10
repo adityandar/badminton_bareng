@@ -1,4 +1,4 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
 
 part 'input_player_state.freezed.dart';
 

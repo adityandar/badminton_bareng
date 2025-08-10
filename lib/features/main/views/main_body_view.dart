@@ -1,4 +1,4 @@
-import 'package:badmintoon/gen/gen.dart';
+import 'package:badminton_bareng/gen/gen.dart';
 import 'package:flutter/material.dart';
 
 class MainBodyView extends StatelessWidget {

@@ -1,5 +1,5 @@
-name: badmintoon
-description: "A new Flutter project."
+name: badminton_bareng
+description: A Flutter web and mobile app for organizing badminton games, randomizing matches, tracking scores, and sharing results.
 
 publish_to: "none"
 

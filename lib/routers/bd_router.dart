@@ -1,5 +1,5 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
-import 'package:badmintoon/routers/bd_router.gr.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
+import 'package:badminton_bareng/routers/bd_router.gr.dart';
 
 @AutoRouterConfig()
 class BdRouter extends RootStackRouter {

@@ -1,5 +1,5 @@
-import 'package:badmintoon/gen/gen.dart';
-import 'package:badmintoon/shared/shared.dart';
+import 'package:badminton_bareng/gen/gen.dart';
+import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class MainHeaderView extends StatelessWidget {
@@ -15,7 +15,7 @@ class MainHeaderView extends StatelessWidget {
           children: [
             Image.asset(Assets.images.logoBadmintoonFilled.path, width: 82),
             Text(
-              'Badmintoon',
+              'Badminton Bareng',
               style: BdTStyles.s20w700.copyWith(fontWeight: FontWeight.w900),
             ),
           ],

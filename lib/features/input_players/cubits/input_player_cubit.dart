@@ -1,4 +1,4 @@
-import 'package:badmintoon/dependencies/dependencies.dart';
+import 'package:badminton_bareng/dependencies/dependencies.dart';
 
 import 'input_player_state.dart';
 
