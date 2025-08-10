@@ -1,5 +1,6 @@
 import 'package:badminton_bareng/dependencies/dependencies.dart';
 import 'package:badminton_bareng/domain/domain.dart';
+import 'package:badminton_bareng/gen/gen.dart';
 import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
@@ -124,6 +125,10 @@ class _LeaderboardScreenshotViewState extends State<LeaderboardScreenshotView> {
                                 if (state.isDataLoading) {
                                   return const CircularProgressIndicator();
                                 }
+                                if (otherPlayers.isEmpty) {
+                                  return const SizedBox();
+                                }
+
                                 final playersName = otherPlayers
                                     .mapIndexed(
                                       (index, player) =>
@@ -144,9 +149,19 @@ class _LeaderboardScreenshotViewState extends State<LeaderboardScreenshotView> {
                           ),
                         ),
                         Gap(8),
-                        Text(
-                          'Powered by BadmintonBareng',
-                          style: BdTStyles.s10w600,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Powered by BadmintonBareng',
+                              style: BdTStyles.s10w600,
+                            ),
+                            Gap(4),
+                            Image.asset(
+                              Assets.images.logoBadmintonFilledStroke.path,
+                              height: 16,
+                            ),
+                          ],
                         ),
                         Gap(8),
                       ],
