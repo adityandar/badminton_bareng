@@ -3,7 +3,7 @@
     "short_name": "Badminton Bareng",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#009E60",
+    "background_color": "#FFFFFF",
     "theme_color": "#009E60",
     "description": "A Flutter web and mobile app for organizing badminton games, randomizing matches, tracking scores, and sharing results.",
     "orientation": "portrait-primary",
