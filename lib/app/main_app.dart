@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
       create: (context) => GameplayCubit(),
       child: MaterialApp.router(
         routerConfig: _bdRouter.config(),
-        title: 'Badmintoon',
+        title: 'Badminton Bareng',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: BdColors.primary),
           useMaterial3: true,

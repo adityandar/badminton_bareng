@@ -4,6 +4,8 @@ import 'package:badminton_bareng/routers/index.dart';
 import 'package:badminton_bareng/shared/shared.dart';
 import 'package:flutter/material.dart';
 
+import '../../../cubits/index.dart';
+
 class OngoingBottomView extends StatelessWidget {
   const OngoingBottomView({super.key});
 
@@ -29,6 +31,7 @@ class OngoingBottomView extends StatelessWidget {
               minHeight: 48,
               onPressed: () {
                 context.read<GameplayCubit>().finishSession();
+                context.read<LeaderboardCubit>().finishSession();
               },
               title: 'Hentikan Sesi',
             ),

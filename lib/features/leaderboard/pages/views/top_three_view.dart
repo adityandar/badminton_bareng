@@ -11,9 +11,7 @@ class TopThreeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (topThreePlayers.length < 3) {
-      return const SizedBox();
-    }
+    final isThirdWinnerExists = topThreePlayers.length > 2;
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
@@ -29,7 +27,11 @@ class TopThreeView extends StatelessWidget {
               children: [
                 Expanded(
                   child: Transform(
-                    transform: Matrix4.translationValues(0, 20, 0),
+                    transform: Matrix4.translationValues(
+                      0,
+                      isThirdWinnerExists ? 20 : 0,
+                      0,
+                    ),
                     child: TopThreeItemWidget(
                       rank: 2,
                       player: topThreePlayers[1],
@@ -43,16 +45,18 @@ class TopThreeView extends StatelessWidget {
                     player: topThreePlayers[0],
                   ),
                 ),
-                Gap(8),
-                Expanded(
-                  child: Transform(
-                    transform: Matrix4.translationValues(0, 20, 0),
-                    child: TopThreeItemWidget(
-                      rank: 3,
-                      player: topThreePlayers[2],
+                if (isThirdWinnerExists) ...[
+                  Gap(8),
+                  Expanded(
+                    child: Transform(
+                      transform: Matrix4.translationValues(0, 20, 0),
+                      child: TopThreeItemWidget(
+                        rank: 3,
+                        player: topThreePlayers[2],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ],
             ),
           ),

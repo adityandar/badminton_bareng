@@ -1,8 +1,7 @@
-import 'package:badminton_bareng/core/core.dart';
 import 'package:badminton_bareng/dependencies/dependencies.dart';
-import 'package:badminton_bareng/domain/domain.dart';
 import 'package:flutter/material.dart';
 
+import '../../../cubits/index.dart';
 import 'index.dart';
 
 class LeaderboardBottomView extends StatelessWidget {
@@ -12,18 +11,13 @@ class LeaderboardBottomView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameplayCubit, GameplayState>(
+    return BlocBuilder<LeaderboardCubit, LeaderboardState>(
       builder: (context, state) {
-        switch (state.activeSession?.state) {
-          case GameplaySessionState.finished:
-            return FinishedBottomView(
-              screenshotController: screenshotController,
-            );
-          case GameplaySessionState.ongoing:
-            return OngoingBottomView();
-          default:
-            return const SizedBox.shrink();
+        if (state.isOngoing) {
+          return OngoingBottomView();
         }
+
+        return FinishedBottomView(screenshotController: screenshotController);
       },
     );
   }

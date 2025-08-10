@@ -35,6 +35,10 @@ class LeaderboardCubit extends Cubit<LeaderboardState> {
     );
   }
 
+  void finishSession() {
+    emit(state.copyWith(isOngoing: false));
+  }
+
   void onScreenshotMaxItemChanged({required int maxItem}) async {
     final screenshotListPlayers = state.remainingPlayers.take(maxItem).toList();
     final screenshotOtherPlayers =
