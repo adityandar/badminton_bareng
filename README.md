@@ -32,3 +32,8 @@ flutter pub get && fluttergen
 
 ### Generate Routes
 dart run build_runner build
+
+### Deploy Web
+
+flutter build web
+firebase deploy --only hosting
